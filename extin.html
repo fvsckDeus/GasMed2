@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAS MEDELLÍN TECH | Metalic Industrial 24H</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syncopate:wght@400;700&family=Rajdhani:wght@300;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        :root {
+            --steel-blue: #4682B4;
+            --electric-blue: #00d4ff;
+            --chrome: #e0e0e0;
+            --dark-metal: #0f171e;
+            --black-industrial: #020406;
+            --neon-glow: 0 0 15px rgba(0, 212, 255, 0.7);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--black-industrial);
+            color: var(--chrome);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        /* =========================================
+           FONDO DINÁMICO DE GAS (MOLÉCULAS BLANCAS)
+           ========================================= */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Detrás de todo el contenido */
+            background: radial-gradient(circle, #1a2a3a 0%, var(--black-industrial) 100%);
+        }
+
+        /* =========================================
+           INTERFAZ PROFESIONAL (UI)
+           ========================================= */
+        #main-content {
+            width: 100%;
+            position: relative;
+            z-index: 10; /* Asegura legibilidad sobre el fondo */
+        }
+
+        nav {
+            background: rgba(10, 15, 20, 0.9);
+            border-bottom: 2px solid var(--electric-blue);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dynamic-logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--electric-blue);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: pulseLogo 3s infinite linear;
+            box-shadow: var(--neon-glow);
+        }
+
+        @keyframes pulseLogo {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 0.7; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+
+        .logo-text {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(to right, #ffffff, var(--steel-blue), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .location-tag {
+            font-family: 'Orbitron';
+            color: var(--electric-blue);
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 7rem;
+            margin: 0;
+            line-height: 0.85;
+            color: var(--chrome);
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .hero-title span {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--electric-blue);
+            filter: drop-shadow(var(--neon-glow));
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #a1b0bc;
+            margin-top: 25px;
+            max-width: 800px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        .btn-metalic {
+            margin-top: 50px;
+            padding: 22px 60px;
+            font-family: 'Orbitron';
+            background: linear-gradient(145deg, #2c3e50, #000000);
+            color: var(--electric-blue);
+            border: 2px solid var(--electric-blue);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-metalic:hover {
+            background: var(--electric-blue);
+            color: var(--black-industrial);
+            box-shadow: 0 0 40px var(--electric-blue);
+            transform: scale(1.05);
+        }
+
+        #servicios {
+            padding: 120px 10%;
+        }
+
+        .grid-industrial {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card-metal {
+            background: rgba(15, 23, 30, 0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 50px;
+            border-radius: 4px;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-metal:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .card-metal h3 {
+            font-family: 'Orbitron';
+            color: var(--chrome);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-metal p {
+            color: #8fa1b3;
+            line-height: 1.7;
+            font-size: 1.15rem;
+        }
+
+        .nequi-box {
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px solid #702082;
+            background: rgba(112, 32, 130, 0.1);
+            text-align: center;
+        }
+
+        .btn-nequi {
+            display: inline-block;
+            background: #da0081;
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-family: 'Orbitron';
+            margin-top: 15px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .btn-nequi:hover { box-shadow: 0 0 25px #da0081; }
+
+        footer {
+            padding: 80px 10%;
+            text-align: center;
+            background: var(--black-industrial);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #5d7082;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <main id="main-content">
+        <nav>
+            <div class="logo-container">
+                <div class="dynamic-logo"></div>
+                <div class="logo-text">MEDELLÍN GAS-TECH</div>
+            </div>
+            <div style="font-family: 'Orbitron'; color: var(--electric-blue); border: 1px solid rgba(255,255,255,0.1); padding: 5px 15px;">24/7 URGENTE</div>
+        </nav>
+
+        <header id="inicio">
+            <div class="location-tag">OPERACIÓN CENTRAL // VALLE DE ABURRÁ</div>
+            <h1 class="hero-title">GAS<span>360</span></h1>
+            <p class="hero-subtitle">RECARGA INDUSTRIAL INSTANTÁNEA PROFESIONAL</p>
+            <button class="btn-metalic">PEDIR RECARGA URGENTE</button>
+        </header>
+
+        <div id="servicios">
+            <div class="grid-industrial">
+                <div class="card-metal">
+                    <h3>SUMINISTRO EXPRÉS</h3>
+                    <p>Logística motorizada de alta velocidad. Cubrimiento total de Medellín en tiempo récord bajo protocolos estrictos.</p>
+                </div>
+                <div class="card-metal">
+                    <h3>INGENIERÍA DE CARGA</h3>
+                    <p>Cilindros de acero certificado con pesaje digital exacto y escaneo de integridad molecular.</p>
+                </div>
+                <div class="card-metal">
+                    <h3>PASARELA DIGITAL</h3>
+                    <p>Habilite su suministro instantáneamente a través de nuestros canales seguros habilitados.</p>
+                    <div class="nequi-box">
+                        <img src="NEQUI2.png" alt="Nequi" width="100">
+                        <br>
+                        <a href="#" class="btn-nequi">INICIAR PAGO</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p style="font-family: 'Orbitron'; color: var(--steel-blue); letter-spacing: 2px;">© 2026 GAS-PRO INDUSTRIAL MEDELLÍN</p>
+            <p>Certificación de Calidad Industrial | Medellín - Colombia | Línea Directa: +57 300 000 0000</p>
+        </footer>
+    </main>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { 
+                    "value": 150, /* Cantidad de moléculas */
+                    "density": { "enable": true, "value_area": 800 } 
+                },
+                "color": { "value": "#ffffff" }, /* BLANCO PURO */
+                "shape": { "type": "circle" },
+                "opacity": { 
+                    "value": 0.5, /* Semi-transparente para parecer gas */
+                    "random": true, /* Opacidad aleatoria */
+                    "anim": { 
+                        "enable": true, 
+                        "speed": 1, 
+                        "opacity_min": 0.1, /* Parpadeo suave */
+                        "sync": false 
+                    }
+                },
+                "size": { 
+                    "value": 4, /* Tamaño base */
+                    "random": true, /* Tamaños diferentes */
+                    "anim": { 
+                        "enable": true, 
+                        "speed": 2, 
+                        "size_min": 0.1, /* Las moléculas crecen y encogen sutilmente */
+                        "sync": false 
+                    }
+                },
+                "line_linked": { 
+                    "enable": true, 
+                    "distance": 120, /* Se conectan entre ellas */
+                    "color": "#ffffff", 
+                    "opacity": 0.1, /* Líneas muy sutiles */
+                    "width": 1 
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3, /* Velocidad del flujo */
+                    "direction": "top", /* EL GAS SUBE */
+                    "random": true, /* Movimiento orgánico, no recto */
+                    "straight": false,
+                    "out_mode": "out", /* Salen por arriba y reaparecen abajo */
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "bubble" }, /* Infla moléculas al pasar ratón */
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "bubble": { "distance": 200, "size": 8, "duration": 2, "opacity": 0.8, "speed": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
